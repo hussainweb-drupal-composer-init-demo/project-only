@@ -39,6 +39,7 @@ install:
 - composer global require hussainweb/drupal-composer-init
 - composer
 - composer help drupal-init
+- composer drupal-init
 
 before_script:
 - composer show
