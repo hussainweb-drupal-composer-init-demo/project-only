@@ -1,35 +1,25 @@
 ---
 language: php
-addons:
-  apt:
-    packages:
-    - elinks # For dysplaying php files on console.
-    - empty-expect
 
 cache:
   directories:
     - $HOME/.composer/cache/files
 
 php: # symfony/skeleton requires ^7.0.8
-- 7.0 # SYMFONY_VERSION="^3.4" only one version of skeleton working with php 7.0
+- 7.0 # SYMFONY_VERSION="3.4" only one version of skeleton working with php 7.0
 - 7.1
 - 7.2
 - nightly
 
 matrix:
   fast_finish: true
-  include:
-  - php: 7.2
-    env: SKELETON_VERSION="dev-master@dev"
   allow_failures:
   - php: 7.0 # sensiolabs/security-checker 4.1.7
   - php: 7.3
   - php: nightly
-  - env: SKELETON_VERSION="dev-master@dev"
 
 before_install:
 - install --directory .travis/bin
-# - if [[ -f config/parameters.yml.travis ]]; then cp config/parameters.yml.travis config/parameters.yml; fi
 - wget http://get.sensiolabs.org/security-checker.phar --output-document=.travis/bin/security-checker
 
 # - pip install pygments # but now pygmentize is no more used right here.
