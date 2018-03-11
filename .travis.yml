@@ -6,17 +6,19 @@ cache:
     - $HOME/.composer/cache/files
 
 php: # symfony/skeleton requires ^7.0.8
-- 7.0 # SYMFONY_VERSION="3.4" only one version of skeleton working with php 7.0
-- 7.1
-- 7.2
 - nightly
+- 7.2
+- 7.1
+- 7.0 # SYMFONY_VERSION="3.4" only one version of skeleton working with php 7.0
 
 matrix:
   fast_finish: true
   allow_failures:
-  - php: 7.0 # sensiolabs/security-checker 4.1.7
-  - php: 7.3
   - php: nightly
+  - php: 7.3
+  - php: 7.2
+  - php: 7.1
+  - php: 7.0 # sensiolabs/security-checker 4.1.7
 
 before_install:
 - install --directory .travis/bin
